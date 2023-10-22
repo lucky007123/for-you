@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content="About Our Agency">
+  <meta name="description" content="">
+  <title>FOR YOU</title>
+  <link rel="stylesheet" href="nicepage.css" media="screen">
+  <link rel="stylesheet" href="Page-2.css" media="screen">
+  <style>
+    .hover-button {
+      background-color: #D2A16B; /* Light Brown */
+      color: #fff; /* White text color */
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .hover-button:hover {
+      background-color: #8B4513; /* Dark Brown */
+    }
+  </style>
+  <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <meta name="generator" content="Nicepage 5.20.8, nicepage.com">
+  <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+  <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+  <style>
+    /* SweetAlert Custom Theme */
+    .custom-swal-popup {
+      background-color: #F1D1CA; /* Light Brown */
+    }
+
+    .custom-swal-title {
+      color: #fff; /* White text color */
+    }
+
+    .custom-swal-content {
+      color: #fff; /* White text color */
+    }
+
+    .custom-swal-confirm {
+      background-color: #8B4513; /* Dark Brown */
+      color: #fff; /* White text color */
+    }
+
+    .custom-swal-confirm:hover {
+      background-color: #A0522D; /* Slightly lighter brown on hover */
+    }
+  </style>
+</head>
+<body data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="en">
+  <section class="u-clearfix u-image u-shading u-section-1" id="sec-0afe">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <div class="data-layout-selected u-clearfix u-expanded-width u-gutter-30 u-layout-wrap u-layout-wrap-1">
+        <div class="u-gutter-0 u-layout">
+          <div class="u-layout-row">
+            <div class="u-container-style u-image u-layout-cell u-size-30 u-image-1" data-image-width="3120" data-image-height="4160">
+              <div class="u-container-layout u-container-layout-1"></div>
+            </div>
+            <div class="u-container-style u-layout-cell u-right-cell u-size-30 u-layout-cell-2">
+              <div class="u-container-layout u-valign-middle u-container-layout-2">
+                <h4 class="u-align-center u-text u-text-1">saanvi dhingra</h4>
+                <h2 class="u-align-center u-custom-font u-font-playfair-display u-text u-text-2">I LOVE YOU ♡</h2>
+                <p class="u-align-center u-text u-text-3">No matter how much I say I love you, I always love you more than that and you know what Everything is better with you. Everything is btter since you ♡ The day I met you, I began to forget a life without you ♡ </p> <br>
+                <button id="daysTogether" class="hover-button">
+                  142 Days together
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    let isNameChanged = false; // Initially, the name is not changed
+
+    // Function to update the days together and toggle the name
+    function updateDaysTogether() {
+      const daysTogetherElement = document.getElementById("daysTogether");
+      const nameElement = document.querySelector(".u-text-1");
+
+      const startDate = new Date('2023-06-03');
+      const today = new Date();
+      const timeDifference = today - startDate;
+      const totalSeconds = Math.floor(timeDifference / 1000);
+      const days = Math.floor(totalSeconds / (24 * 60 * 60));
+      const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60));
+      const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+      const seconds = totalSeconds % 60;
+
+      // Update the content with the new count
+      daysTogetherElement.textContent = `${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds together`;
+
+      // Toggle the name between "dhingra" and "meghlan"
+      if (isNameChanged) {
+        nameElement.textContent = "saanvi dhingra";
+        isNameChanged = false;
+      } else {
+        nameElement.textContent = "saanvi meghlan";
+        isNameChanged = true;
+      }
+    }
+
+    function displayPopup() {
+  Swal.fire({
+    title: '<span class="dark-color" style="color: #333;">I Love You ❤️</span>', // Use a custom class for dark color
+    text: "You're Mine!",
+    icon: "info", // Use the information icon
+    iconHtml: '<span style="font-size: 24px; line-height: 1;">💍</span>', // Ring emoji as HTML
+    confirmButtonText: "OK",
+    customClass: {
+      popup: 'custom-swal-popup',
+      title: 'custom-swal-title',
+      content: 'custom-swal-content',
+      confirmButton: 'custom-swal-confirm',
+    }
+  }).then(() => {
+    updateDaysTogether(); // Change the name back to "dhingra" after clicking "OK"
+  });
+}
+
+
+
+
+    // Initial call to set the initial value
+    updateDaysTogether();
+
+    // Function to update the days together every second
+    setInterval(updateDaysTogether, 1000); // 1 second in milliseconds
+
+    // Add a click event to the button
+    document.getElementById("daysTogether").addEventListener("click", displayPopup);
+  </script>
+</body>
+</html>
